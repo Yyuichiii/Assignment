@@ -25,6 +25,8 @@ class MyUser(AbstractBaseUser):
         default=0,
         help_text="Points representing the number of users referred"
         )
+    
+    
     is_active = models.BooleanField(
         default=True,
         help_text="Designates whether this user should be treated as active. "
