@@ -111,4 +111,3 @@ This repository contains a referral system API built with Django, deployed using
 - Ritik Mehra (@Yyuichiii)
 
 Feel free to contribute by submitting pull requests or opening issues!
-```
