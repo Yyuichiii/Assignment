@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers,pagination
 from .models import MyUser
 
 class UserRegistrationSerializers(serializers.ModelSerializer):
@@ -44,7 +44,7 @@ class UserRegistrationSerializers(serializers.ModelSerializer):
         name = validated_data.get('name')
         password = validated_data.get('password')
         Code = validated_data.get('Code')
-        new_user=MyUser.objects.create_user(email, name, password)
+        new_user=MyUser.objects.create_user(email, name, None,password)
 
         if Code:
             try:
@@ -57,3 +57,47 @@ class UserRegistrationSerializers(serializers.ModelSerializer):
                 raise serializers.ValidationError("Invalid referral code")
 
         return new_user
+
+class LoginSerializers(serializers.Serializer):
+    """
+    Serializer for handling user login data.
+
+    Attributes:
+        email: A field for user email input.
+               It validates that the input is a valid email address.
+               Max length is restricted to 255 characters.
+        password: A field for user password input.
+                  It hides the input text (password) for security purposes.
+                  It's styled as a password input field.
+    """
+    email = serializers.EmailField(
+        max_length=255,
+        help_text="User's email address."
+    )
+    password = serializers.CharField(
+        style={'input_type': 'password'},
+        help_text="User's password."
+    )
+
+
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=MyUser
+        fields=['email','name','referral_code','created_at','points']
+
+
+class MyUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = ['name','email','created_at']
+
+
+class UserReferralSerializer(serializers.ModelSerializer):
+    referred_user = MyUserSerializer(many=True)
+
+    class Meta:
+        model = MyUser
+        fields = ['referred_user']
+

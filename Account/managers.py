@@ -19,7 +19,6 @@ class MyUserManager(BaseUserManager):
             name=name,
             referral_code=generate_referral_code(),
         )
-
         user.set_password(password)
         user.save(using=self._db)
         return user

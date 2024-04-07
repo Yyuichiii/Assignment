@@ -28,9 +28,6 @@ class MyUser(AbstractBaseUser):
     
     referred_user = models.ManyToManyField('self',symmetrical=False)
     
-
-
-
     
     is_active = models.BooleanField(
         default=True,
