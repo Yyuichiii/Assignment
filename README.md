@@ -1,6 +1,6 @@
 # Referral System API
 
-This repository contains a referral system API built with Django, deployed using Docker and Docker Compose.
+This repository contains a referral system API (Assignment) built with Django, deployed using Docker and Docker Compose.
 
 ## Installation and Setup
 
@@ -106,8 +106,3 @@ This repository contains a referral system API built with Django, deployed using
       },
       
   ```
-
-## Contributors
-- Ritik Mehra (@Yyuichiii)
-
-Feel free to contribute by submitting pull requests or opening issues!
