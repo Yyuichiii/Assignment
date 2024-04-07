@@ -26,6 +26,11 @@ class MyUser(AbstractBaseUser):
         help_text="Points representing the number of users referred"
         )
     
+    referred_user = models.ManyToManyField('self',symmetrical=False)
+    
+
+
+
     
     is_active = models.BooleanField(
         default=True,
