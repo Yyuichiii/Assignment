@@ -1,16 +1,12 @@
-version: '3'
-
+version: "3.8"
 services:
-  web:
+  app:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
-    depends_on:
-      - db
-  db:
-    image: "sqlite:latest"
-    volumes:
-      - ./db_data:/var/lib/sqlite
+      - 8000:8000
+    image: app:django
+    container_name: django_container
+    command: python manage.py runserver 0.0.0.0:8000
+

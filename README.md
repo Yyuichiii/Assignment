@@ -21,7 +21,7 @@ This repository contains a referral system API (Assignment) built with Django, d
 
 3. Build and run the Docker containers:
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
 
 4. Once the containers are running, you can access the API at [http://localhost:8000](http://localhost:8000).
